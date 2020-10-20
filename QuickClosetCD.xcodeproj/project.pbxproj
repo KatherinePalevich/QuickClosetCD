@@ -13,6 +13,8 @@
 		C92D719B253F54B000151F6A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C92D719A253F54B000151F6A /* Preview Assets.xcassets */; };
 		C92D719D253F54B000151F6A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D719C253F54B000151F6A /* Persistence.swift */; };
 		C92D71A0253F54B000151F6A /* QuickClosetCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C92D719E253F54B000151F6A /* QuickClosetCD.xcdatamodeld */; };
+		C92D71AB253F69B600151F6A /* UIImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D71AA253F69B600151F6A /* UIImageTransformer.swift */; };
+		C92D71AF253F6A7F00151F6A /* Item+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D71AE253F6A7F00151F6A /* Item+Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		C92D719C253F54B000151F6A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		C92D719F253F54B000151F6A /* QuickClosetCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuickClosetCD.xcdatamodel; sourceTree = "<group>"; };
 		C92D71A1253F54B000151F6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C92D71AA253F69B600151F6A /* UIImageTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageTransformer.swift; sourceTree = "<group>"; };
+		C92D71AE253F6A7F00151F6A /* Item+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +60,12 @@
 		C92D7192253F54AC00151F6A /* QuickClosetCD */ = {
 			isa = PBXGroup;
 			children = (
+				C92D71AD253F6A5200151F6A /* Model */,
 				C92D7193253F54AC00151F6A /* QuickClosetCDApp.swift */,
 				C92D7195253F54AC00151F6A /* ContentView.swift */,
 				C92D7197253F54B000151F6A /* Assets.xcassets */,
-				C92D719C253F54B000151F6A /* Persistence.swift */,
 				C92D71A1253F54B000151F6A /* Info.plist */,
-				C92D719E253F54B000151F6A /* QuickClosetCD.xcdatamodeld */,
+				C92D71AA253F69B600151F6A /* UIImageTransformer.swift */,
 				C92D7199253F54B000151F6A /* Preview Content */,
 			);
 			path = QuickClosetCD;
@@ -73,6 +77,16 @@
 				C92D719A253F54B000151F6A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C92D71AD253F6A5200151F6A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C92D719C253F54B000151F6A /* Persistence.swift */,
+				C92D719E253F54B000151F6A /* QuickClosetCD.xcdatamodeld */,
+				C92D71AE253F6A7F00151F6A /* Item+Helper.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,8 +160,10 @@
 			files = (
 				C92D71A0253F54B000151F6A /* QuickClosetCD.xcdatamodeld in Sources */,
 				C92D719D253F54B000151F6A /* Persistence.swift in Sources */,
+				C92D71AF253F6A7F00151F6A /* Item+Helper.swift in Sources */,
 				C92D7196253F54AC00151F6A /* ContentView.swift in Sources */,
 				C92D7194253F54AC00151F6A /* QuickClosetCDApp.swift in Sources */,
+				C92D71AB253F69B600151F6A /* UIImageTransformer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
