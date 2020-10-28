@@ -13,8 +13,9 @@ struct QuickClosetCDApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ItemList()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .accentColor(Color.yellow)
         }
     }
 }
