@@ -19,6 +19,7 @@
 		C92D71BB2543505B00151F6A /* ItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D71BA2543505B00151F6A /* ItemList.swift */; };
 		C92D71BE2543653900151F6A /* ItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D71BD2543653900151F6A /* ItemForm.swift */; };
 		C92D71C1254365D500151F6A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D71C0254365D500151F6A /* ImagePicker.swift */; };
+		C9F0685C254BA899005CFC01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0685B254BA899005CFC01 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C92D71BA2543505B00151F6A /* ItemList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemList.swift; sourceTree = "<group>"; };
 		C92D71BD2543653900151F6A /* ItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemForm.swift; sourceTree = "<group>"; };
 		C92D71C0254365D500151F6A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C9F0685B254BA899005CFC01 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				C92D71BA2543505B00151F6A /* ItemList.swift */,
 				C92D71BD2543653900151F6A /* ItemForm.swift */,
 				C92D71C0254365D500151F6A /* ImagePicker.swift */,
+				C9F0685B254BA899005CFC01 /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C92D71A0253F54B000151F6A /* QuickClosetCD.xcdatamodeld in Sources */,
+				C9F0685C254BA899005CFC01 /* ContentView.swift in Sources */,
 				C92D71B825434F0200151F6A /* ItemEditor.swift in Sources */,
 				C92D719D253F54B000151F6A /* Persistence.swift in Sources */,
 				C92D71AF253F6A7F00151F6A /* Item+Helper.swift in Sources */,

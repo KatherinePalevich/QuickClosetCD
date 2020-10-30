@@ -188,7 +188,7 @@ struct ItemRow: View {
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ItemList_Previews: PreviewProvider {
   static var previews: some View {
     Group {
         item.colorScheme(.light)
