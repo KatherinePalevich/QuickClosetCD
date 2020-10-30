@@ -190,6 +190,15 @@ struct ItemRow: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ItemList().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    Group {
+        item.colorScheme(.light)
+        item.colorScheme(.dark)
+    }
+    .previewLayout(.sizeThatFits)
+   
   }
+    static var item: some View {
+        ItemList().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .accentColor(.yellow)
+    }
 }
