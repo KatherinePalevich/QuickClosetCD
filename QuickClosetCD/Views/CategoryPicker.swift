@@ -32,28 +32,38 @@ struct OptionalToggle<Label> : View where Label : View {
 }
 
 class CategoryPickerViewModel: ObservableObject {
-    typealias SaveFn = (NSSet) -> Void
+    typealias SaveFn = (Set<String>) -> Void
+    /// Key is the category name and value is whether it has been chosen or not by the user.
     @Published var categories: [String: Bool]
     private let saveFn: SaveFn
     
-    init(categories: NSSet, potentialCategories: NSSet, save: @escaping SaveFn) {
-        self.categories = ["A": false, "B": true]
+    init(chosenCategories: Set<String>, potentialCategories: Set<String>, save: @escaping SaveFn) {
         self.saveFn = save
+        self.categories = [String: Bool]()
+        for potentialCategory in potentialCategories {
+            self.categories[potentialCategory] = chosenCategories.contains(potentialCategory)
+        }
     }
     
     func save() {
-        saveFn(NSSet())
+        saveFn(Set(categories.compactMap{ categoryName, isChosen in
+            if isChosen {
+                return categoryName
+            } else {
+                return nil
+            }
+        }))
     }
 }
 
 struct CategoryPicker: View {
-    /// Manages the categories
-    @ObservedObject var categories: CategoryPickerViewModel
+    /// Manages the chosenCategories
+    @ObservedObject var chosenCategories: CategoryPickerViewModel
     
     var body: some View {
         VStack {
-            ForEach (categories.categories.keys.sorted(), id: \.self) { key in
-                OptionalToggle(isOn: $categories.categories[key]) {
+            ForEach (chosenCategories.categories.keys.sorted(), id: \.self) { key in
+                OptionalToggle(isOn: $chosenCategories.categories[key]) {
                     Text(key)
                 }
             }
@@ -64,6 +74,6 @@ struct CategoryPicker: View {
 
 struct CategoryPicker_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryPicker(categories: CategoryPickerViewModel(categories: NSSet(), potentialCategories: NSSet(), save: {_ in}))
+        CategoryPicker(chosenCategories: CategoryPickerViewModel(chosenCategories: Set(["Top"]), potentialCategories: Set(["Top", "Accessory"]), save: {_ in}))
     }
 }

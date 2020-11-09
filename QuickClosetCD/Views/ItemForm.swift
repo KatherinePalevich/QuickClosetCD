@@ -5,6 +5,7 @@ import CoreData
 /// `ItemCreationSheet` and `ItemEditor`.
 struct ItemForm: View {
     /// Manages the item form
+    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var item: Item
     @State private var showingImagePicker = false
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
@@ -13,8 +14,10 @@ struct ItemForm: View {
     var body: some View {
         List {
             TextField("Item", text: $item.wrappedName)
-            TextField("Category", text: $item.categoryName)
-              .disableAutocorrection(true)
+            NavigationLink(destination: categoryPicker){
+                TextField("Category", text: $item.categoryName)
+                  .disableAutocorrection(true)
+            }
           if let photo = item.wrappedPhoto {
             Image(uiImage: photo)
               .resizable()
@@ -36,6 +39,11 @@ struct ItemForm: View {
         .listStyle(GroupedListStyle())
     }
 
+    var categoryPicker : some View {
+        let categoryNames = Category.allCategoryNames(context: viewContext)
+        return CategoryPicker(chosenCategories: CategoryPickerViewModel(chosenCategories: Set(["Top"]), potentialCategories: Set(categoryNames), save: {_ in}))
+    }
+    
   func paste() {
     if pasteboard.hasImages {
       item.wrappedPhoto = pasteboard.image

@@ -21,6 +21,7 @@
 		C92D71C1254365D500151F6A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92D71C0254365D500151F6A /* ImagePicker.swift */; };
 		C9F0685C254BA899005CFC01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F0685B254BA899005CFC01 /* ContentView.swift */; };
 		C9F06863254BB15A005CFC01 /* CategoryPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F06862254BB15A005CFC01 /* CategoryPicker.swift */; };
+		C9F3A10B2557C3E5007BC5D8 /* Category+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F3A10A2557C3E5007BC5D8 /* Category+Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C92D71C0254365D500151F6A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C9F0685B254BA899005CFC01 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C9F06862254BB15A005CFC01 /* CategoryPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPicker.swift; sourceTree = "<group>"; };
+		C9F3A10A2557C3E5007BC5D8 /* Category+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+Helper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				C92D719E253F54B000151F6A /* QuickClosetCD.xcdatamodeld */,
+				C9F3A10A2557C3E5007BC5D8 /* Category+Helper.swift */,
 				C92D71AE253F6A7F00151F6A /* Item+Helper.swift */,
 				C92D71AA253F69B600151F6A /* UIImageTransformer.swift */,
 				C92D719C253F54B000151F6A /* Persistence.swift */,
@@ -191,6 +194,7 @@
 				C92D71AF253F6A7F00151F6A /* Item+Helper.swift in Sources */,
 				C92D71BE2543653900151F6A /* ItemForm.swift in Sources */,
 				C92D7194253F54AC00151F6A /* QuickClosetCDApp.swift in Sources */,
+				C9F3A10B2557C3E5007BC5D8 /* Category+Helper.swift in Sources */,
 				C92D71C1254365D500151F6A /* ImagePicker.swift in Sources */,
 				C92D71AB253F69B600151F6A /* UIImageTransformer.swift in Sources */,
 				C92D71BB2543505B00151F6A /* ItemList.swift in Sources */,
