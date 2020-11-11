@@ -15,8 +15,7 @@ struct ItemForm: View {
         List {
             TextField("Item", text: $item.wrappedName)
             NavigationLink(destination: categoryPicker){
-                TextField("Category", text: $item.categoryName)
-                  .disableAutocorrection(true)
+                Text(item.categoryNames.sorted().joined(separator: ", "))
             }
           if let photo = item.wrappedPhoto {
             Image(uiImage: photo)
@@ -42,7 +41,7 @@ struct ItemForm: View {
 
     var categoryPicker : some View {
         let categoryNames = Category.allCategoryNames(context: viewContext)
-        return CategoryPicker(selection: $selection, choices: ["Top", "Accessories"]){
+        return CategoryPicker(selection: $item.categoryNames, choices: Set(categoryNames)){
             Text($0)
         }
     }
