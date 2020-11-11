@@ -38,10 +38,13 @@ struct ItemForm: View {
         }
         .listStyle(GroupedListStyle())
     }
+    @State var selection: Set<String> = Set(["Top"])
 
     var categoryPicker : some View {
         let categoryNames = Category.allCategoryNames(context: viewContext)
-        return CategoryPicker(chosenCategories: CategoryPickerViewModel(chosenCategories: Set(["Top"]), potentialCategories: Set(categoryNames), save: {_ in}))
+        return CategoryPicker(selection: $selection, choices: ["Top", "Accessories"]){
+            Text($0)
+        }
     }
     
   func paste() {
