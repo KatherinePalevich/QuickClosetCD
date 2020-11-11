@@ -31,6 +31,27 @@ extension Item {
         self.categories = categories
       }
     }
+    
+    var categoryNames: Set<String> {
+      get {
+        guard let c = categories else {
+            return []
+        }
+        let d = c as! Set<Category>
+        let e = d.compactMap(\.name)
+        return Set(e)
+      }
+      set(newValue) {
+        objectWillChange.send()
+        let newCategories = Set(newValue.map { name -> Category in
+            let category = Category(context: self.managedObjectContext!)
+            category.name = name
+            return category
+        })
+        self.categories = newCategories as NSSet
+      }
+    }
+
 
     var wrappedPhoto: UIImage? {
       get {
