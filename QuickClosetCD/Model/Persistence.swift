@@ -39,6 +39,7 @@ struct PersistenceController {
     UIImageTransformer.register()
 
     container = NSPersistentContainer(name: "QuickClosetCD")
+    let localContainer = container
     if inMemory {
       container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
     }
@@ -57,6 +58,14 @@ struct PersistenceController {
          */
         fatalError("Unresolved error \(error), \(error.userInfo)")
       }
+        //Make sure there are categories for the user to choose from
+        let categoryNames = Category.allCategoryNames(context: localContainer.viewContext)
+        if categoryNames.count == 0 {
+                for categoryName in ["Top", "Bottom", "Accessory"]{
+                let category = Category(context: localContainer.viewContext)
+                category.name = categoryName
+            }
+        }
     })
   }
 }
