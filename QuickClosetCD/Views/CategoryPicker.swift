@@ -12,36 +12,40 @@ import SwiftUI
 struct CategoryPicker<Label> : View where Label : View {
     //@Binding is shorthand
     @Binding var selection : Set<String>
-    private var choices: [String]
+    private var categoryGroups: CategoryGroups
     private let label: (String) -> Label
     
-    init(selection: Binding<Set<String>>, choices: Set<String>, @ViewBuilder label: @escaping (String) -> Label) {
+    init(selection: Binding<Set<String>>, categoryGroups: CategoryGroups, @ViewBuilder label: @escaping (String) -> Label) {
         //The underscore is to put the binding into the binding
         self._selection = selection
         //We want to display the choices in sorted order so we call the sorted() method to sort the Array
-        self.choices = Array(choices).sorted()
+        self.categoryGroups = categoryGroups
         self.label = label
     }
     
     var body: some View {
-        List(choices, id:\.self){ choice in
-            Toggle(isOn: Binding(
-                    get: {
-                        selection.contains(choice)
-                    },
-                    set: { on in
-                        if on {
-                            selection.insert(choice)
-                        } else {
-                            selection.remove(choice)
+        Form{
+        ForEach(categoryGroups, id: \.name) { categoryGroup in
+            DisclosureGroup(categoryGroup.name) {
+                ForEach(categoryGroup.categories, id:\.self){ category in
+                    Toggle(isOn: Binding(
+                        get: {
+                            selection.contains(category)
+                        },
+                        set: { on in
+                            if on {
+                                selection.insert(category)
+                            } else {
+                                selection.remove(category)
+                            }
                         }
+                    )) {
+                        label(category)
                     }
-            )) {
-                label(choice)
+                }
             }
-            
         }
-
+    }
     }
 }
 struct CategoryPicker_Previews: PreviewProvider {
@@ -49,7 +53,7 @@ struct CategoryPicker_Previews: PreviewProvider {
     struct CategoryPickerWrapper : View {
         @State private var selection = Set<String>(["Top"])
         var body: some View {
-            CategoryPicker(selection: $selection, choices: ["Top", "Accessory"]){
+            CategoryPicker(selection: $selection, categoryGroups: CategoryGroup.allCategoryGroups){
                 Text($0)
             }
         }

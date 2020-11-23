@@ -51,6 +51,7 @@ struct ItemList2: View {
         case .byName:
             return FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Item.name, ascending: true)])
         case .byCategory:
+            //This code doesn't work now that Category is a toMany so it can't be sorted
             return FetchRequest(sortDescriptors: [NSSortDescriptor(key: "Category.name", ascending: true)])
         }
     }
@@ -142,6 +143,8 @@ struct ItemList3: View {
                 }
                 
             })
+            .environment(\.managedObjectContext, childContext)
+            .accentColor(.yellow)
     }
     
     private func deleteItems(offsets: IndexSet) {

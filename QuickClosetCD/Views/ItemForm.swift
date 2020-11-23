@@ -37,11 +37,9 @@ struct ItemForm: View {
         }
         .listStyle(GroupedListStyle())
     }
-    @State var selection: Set<String> = Set(["Top"])
-
+    
     var categoryPicker : some View {
-        let categoryNames = Category.allCategoryNames(context: viewContext)
-        return CategoryPicker(selection: $item.categoryNames, choices: Set(categoryNames)){
+        return CategoryPicker(selection: $item.categoryNames, categoryGroups: CategoryGroup.allCategoryGroups){
             Text($0)
         }
     }
