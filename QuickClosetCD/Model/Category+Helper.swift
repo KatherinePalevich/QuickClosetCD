@@ -25,4 +25,6 @@ extension Category {
     static func allCategoryNames(context: NSManagedObjectContext) -> [String] {
         allCategories(context: context).compactMap(\.name)
     }
+    
+    
 }

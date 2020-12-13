@@ -51,8 +51,7 @@ struct ItemList2: View {
         case .byName:
             return FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Item.name, ascending: true)])
         case .byCategory:
-            //This code doesn't work now that Category is a toMany so it can't be sorted
-            return FetchRequest(sortDescriptors: [NSSortDescriptor(key: "Category.name", ascending: true)])
+            return FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Item.categoriesSortKey, ascending: true)])
         }
     }
 }
@@ -168,7 +167,7 @@ struct ItemList3: View {
         case .byName:
             return Button(action: toggleSortOrder, label: {
                 HStack {
-                    Text("Title")
+                    Text("Item Name")
                     Image(systemName: "arrowtriangle.up.fill")
                         .imageScale(.small)
                 }
@@ -176,7 +175,7 @@ struct ItemList3: View {
         case .byCategory:
             return Button(action: toggleSortOrder, label: {
                 HStack {
-                    Text("Author")
+                    Text("Category")
                     Image(systemName: "arrowtriangle.up.fill")
                         .imageScale(.small)
                 }

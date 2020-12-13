@@ -15,7 +15,7 @@ struct ItemForm: View {
         List {
             TextField("Item", text: $item.wrappedName)
             NavigationLink(destination: categoryPicker){
-                Text(item.categoryNames.sorted().joined(separator: ", "))
+                Text(item.computedCategoriesSortKey)
             }
           if let photo = item.wrappedPhoto {
             Image(uiImage: photo)

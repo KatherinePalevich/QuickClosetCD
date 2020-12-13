@@ -20,6 +20,7 @@ struct ItemEditor: View {
             .onDisappear(perform: {
                 // Ignore validation errors
                 do {
+                    item.categoriesSortKey = item.computedCategoriesSortKey
                     try context.save()
                 } catch {
                     // Replace this implementation with code to handle the error appropriately.

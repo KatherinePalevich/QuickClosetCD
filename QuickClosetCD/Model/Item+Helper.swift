@@ -51,6 +51,10 @@ extension Item {
         self.categories = newCategories as NSSet
       }
     }
+    
+    var computedCategoriesSortKey : String {
+        self.categoryNames.sorted().joined(separator: ", ")
+    }
 
 
     var wrappedPhoto: UIImage? {

@@ -38,6 +38,7 @@ struct ItemCreationSheet: View {
 
     private func save() {
         do {
+            item.categoriesSortKey = item.computedCategoriesSortKey
             try context.save()
             dismissAction()
         } catch {
