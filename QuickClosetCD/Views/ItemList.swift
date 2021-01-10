@@ -24,9 +24,7 @@ enum SortOrder {
 
 struct ItemList: View {
     var body: some View {
-        NavigationView {
             ItemList2()
-        }
     }
 }
 
@@ -168,7 +166,7 @@ struct ItemList3: View {
             return Button(action: toggleSortOrder, label: {
                 HStack {
                     Text("Item Name")
-                    Image(systemName: "arrowtriangle.up.fill")
+                    Image(systemName: "tag")
                         .imageScale(.small)
                 }
             })
@@ -176,7 +174,7 @@ struct ItemList3: View {
             return Button(action: toggleSortOrder, label: {
                 HStack {
                     Text("Category")
-                    Image(systemName: "arrowtriangle.up.fill")
+                    Image(systemName: "tray.2")
                         .imageScale(.small)
                 }
             })
