@@ -28,25 +28,90 @@ let icon : [String: String] = [
     "50n" : "cloud.fog.fill"
 ]
 
-struct OutfitGenerator: View {
-    @State private var current: Current?
-    var body: some View {
-        VStack {
-            HStack{
-                Text("\(current?.name ?? "")")
-                    Text(Date().addingTimeInterval(600), style: .date)
-            }.onAppear(perform: loadData)
-            Image(systemName: icon[current?.weather[0].icon ?? ""] ?? "").onAppear(perform: loadData)
-            Text("\(current?.weather[0].main ?? "")").onAppear(perform: loadData)
-            HStack{
-                Text("Temperature: \(temp)").onAppear(perform: loadData)
-                Text("Feels Like: \(feelsLike)").onAppear(perform: loadData)
-            }
-            Text("Min/Max:  \(tempMin) / \(tempMax) ")
-        }
+extension Forecast.Wind {
+    var windSpeed : String {
+        let formatter = MeasurementFormatter()
+        formatter.locale = Locale.current
+        formatter.numberFormatter.maximumFractionDigits = 0
+        let measurement = Measurement(value: speed, unit: UnitSpeed.knots)
+        return formatter.string(from: measurement)
     }
     
-    private var temp : String {
+}
+
+extension Forecast.ListItem {
+    var hour : String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h a"
+        return formatter.string(from: dt)
+    }
+}
+
+extension Forecast.ListItem {
+    var precipProb : String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.minimumIntegerDigits = 1
+        formatter.maximumIntegerDigits = 3
+        formatter.maximumFractionDigits = 0
+        return formatter.string(from: NSNumber(value: pop))!
+    }
+}
+
+extension Forecast.ListItem {
+    var tempMaxF : String {
+        let formatter = MeasurementFormatter()
+        formatter.locale = Locale.current
+        formatter.numberFormatter.maximumFractionDigits = 0
+        let measurement = Measurement(value: main.tempMax, unit: UnitTemperature.kelvin)
+        return formatter.string(from: measurement)
+    }
+}
+
+struct OutfitGenerator: View {
+    @State private var current: Current?
+    @State private var forecast: Forecast?
+    var body: some View {
+        realBody.foregroundColor(Color.white)
+            .background(Color(UIColor(hue: 200.0/360.0, saturation: 0.44, brightness: 0.8, alpha: 1)))
+            .cornerRadius(25)
+            .padding()
+        
+    }
+    
+    private var realBody : some View {
+        VStack{
+            Text("\(current?.name ?? "")").font(.largeTitle)
+            Text(Date().addingTimeInterval(600), style: .date)
+            Image(systemName: icon[current?.weather[0].icon ?? ""] ?? "")
+                .imageScale(.large)
+            Text("\(current?.weather[0].main ?? "")")
+            Text(currTemp).font(.title)
+            Text("Feels Like: \(feelsLike)")
+            Text("Min/Max:  \(tempMin) / \(tempMax) ")
+            ScrollView(.horizontal) {
+                HStack(spacing: 20) {
+                    if let forecast = forecast {
+                        ForEach(forecast.list[...12], id: \.dt) { listItem in
+                            VStack {
+                                Text(listItem.hour)
+                                Image(systemName: icon[listItem.weather.first!.icon]!)
+                                    .renderingMode(.original)
+                                    .frame(height: 30)
+                                Text(listItem.tempMaxF)
+                                Text(listItem.precipProb)
+                            }
+                        }
+                    }
+                }.frame(maxWidth: .infinity)
+            }.padding()
+        }.onAppear {
+            loadDataCurrent()
+            loadDataForecast()
+    }
+    }
+    
+    private var currTemp : String {
         if let temp = current?.main.temp {
             let formatter = MeasurementFormatter()
             formatter.locale = Locale.current
@@ -60,7 +125,7 @@ struct OutfitGenerator: View {
     }
     
     private var feelsLike : String {
-        if let feelsLike = current?.main.feels_like {
+        if let feelsLike = current?.main.feelsLike {
             let formatter = MeasurementFormatter()
             formatter.locale = Locale.current
             formatter.numberFormatter.maximumFractionDigits = 0
@@ -73,7 +138,7 @@ struct OutfitGenerator: View {
     }
     
     private var tempMin : String {
-        if let tempMin = current?.main.temp_min {
+        if let tempMin = current?.main.tempMin {
             let formatter = MeasurementFormatter()
             formatter.locale = Locale.current
             formatter.numberFormatter.maximumFractionDigits = 0
@@ -86,7 +151,7 @@ struct OutfitGenerator: View {
     }
     
     private var tempMax : String {
-        if let tempMax = current?.main.temp_max {
+        if let tempMax = current?.main.tempMax {
             let formatter = MeasurementFormatter()
             formatter.locale = Locale.current
             formatter.numberFormatter.maximumFractionDigits = 0
@@ -99,7 +164,7 @@ struct OutfitGenerator: View {
     }
     
     // Not my own code, got it from this link: https://www.hackingwithswift.com/books/ios-swiftui/sending-and-receiving-codable-data-with-urlsession-and-swiftui
-    func loadData() {
+    func loadDataCurrent() {
         let current = OpenWeather.current(lat: 47.6062, lon: -122.3321, key: "91691b703a4a262e395407f03199061c")
         guard let url = URL(string: "https://" + current.path)
         else {
@@ -108,7 +173,24 @@ struct OutfitGenerator: View {
         }
         let request = URLRequest(url: url)
         URLSession.shared.dataTask(with: request) { data, response, error in
-            self.current = try! JSONDecoder().decode(Current.self, from: data!)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            self.current = try! decoder.decode(Current.self, from: data!)
+        }.resume()
+    }
+    
+    func loadDataForecast() {
+        let forecast = OpenWeather.forecast(lat: 47.6062, lon: -122.3321, key: "91691b703a4a262e395407f03199061c")
+        guard let url = URL(string: "https://" + forecast.path)
+        else {
+            print("Invalid URL")
+            return
+        }
+        let request = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            self.forecast = try! decoder.decode(Forecast.self, from: data!)
         }.resume()
     }
 }
