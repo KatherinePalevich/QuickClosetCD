@@ -76,9 +76,9 @@ struct WeatherReport: View {
     var body: some View {
         Section(header: Text("Weather")) {
             realBody.foregroundColor(Color.white)
+                .padding()
                 .background(Color(UIColor(hue: 200.0/360.0, saturation: 0.44, brightness: 0.8, alpha: 1)))
                 .cornerRadius(25)
-                .padding()
         }
     }
     

@@ -38,6 +38,9 @@ struct OutfitView: View {
             if let accessory = outfit.accessory {
                 ItemView(item: accessory)
             }
-        }
+        }.foregroundColor(Color.white)
+        .padding()
+        .background(Color(UIColor(hue: 200.0/360.0, saturation: 0.44, brightness: 0.8, alpha: 1)))
+        .cornerRadius(8)
     }
 }
