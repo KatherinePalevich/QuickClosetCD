@@ -26,5 +26,7 @@ extension Category {
         allCategories(context: context).compactMap(\.name)
     }
     
-    
+    static func typeCategoryNames() -> [String]{
+        return ["Top", "Bottom", "Headwear", "Jewelry", "Accessory", "Shoes", "Socks", "Outerwear"]
+    }
 }

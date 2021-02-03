@@ -53,7 +53,11 @@ extension Item {
     }
     
     var computedCategoriesSortKey : String {
-        self.categoryNames.sorted().joined(separator: ", ")
+        let typeCategories = Set(Category.typeCategoryNames())
+        let categories = Set(self.categoryNames)
+        let importantCategories = categories.intersection(typeCategories)
+        let unimportantCategories = categories.subtracting(typeCategories)
+        return (importantCategories.sorted() + unimportantCategories.sorted()).joined(separator: ", ")
     }
 
 
