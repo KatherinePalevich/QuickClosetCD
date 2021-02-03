@@ -8,9 +8,9 @@
 import CoreData
 import Foundation
 
-func fetchItems(color: ItemColor, formality: Formality, category: String, context: NSManagedObjectContext) -> [Item] {
+func fetchItems(color: ItemColor, formality: Formality, category: String, context: NSManagedObjectContext, season: String) -> [Item] {
     let itemsRequest = NSFetchRequest<Item>(entityName: "Item")
-    itemsRequest.predicate = NSPredicate(format: "categoriesSortKey CONTAINS %@ AND categoriesSortKey CONTAINS %@", formality.description, category)
+    itemsRequest.predicate = NSPredicate(format: "categoriesSortKey CONTAINS %@ AND categoriesSortKey CONTAINS %@ AND categoriesSortKey CONTAINS %@", formality.description, category, season)
     let items = try! context.fetch(itemsRequest)
     return items
 }
@@ -31,7 +31,7 @@ struct Outfit : Identifiable {
 
 func generateOutfits(color: ItemColor, formality: Formality, context: NSManagedObjectContext) -> [Outfit] {
     func fetchItems(category: String) -> [Item] {
-        QuickClosetCD.fetchItems(color: color, formality: formality, category: category, context: context)
+        QuickClosetCD.fetchItems(color: color, formality: formality, category: category, context: context, season: "Winter")
     }
     let tops = fetchItems(category: "Top")
     let bottoms = fetchItems(category: "Bottom")
