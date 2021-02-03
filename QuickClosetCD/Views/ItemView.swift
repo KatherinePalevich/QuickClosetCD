@@ -10,6 +10,14 @@ import SwiftUI
 struct ItemView: View {
     let item : Item
     var body: some View {
-        Text(item.wrappedName)
+        if let photo = item.wrappedPhoto {
+          Image(uiImage: photo)
+            .resizable()
+            .scaledToFit()
+        }
+        if let name = item.name {
+            Text(name)
+        }
+        
     }
 }

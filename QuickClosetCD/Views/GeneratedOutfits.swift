@@ -16,10 +16,12 @@ struct GeneratedOutfits: View {
     
     var body: some View {
         Text("Based on the given emotion of \(emotion.description) and the formality of \(formality.description) here are your generated outfits.")
-        let outfits = [Outfit(color: .black, formality: formality, context: moc)]
+        let outfits = generateOutfits(color: .black, formality: formality, context: moc)
         ScrollView(.horizontal) {
-            ForEach(outfits) { outfit in
-                OutfitView(outfit: outfit)
+            HStack{
+                ForEach(outfits) { outfit in
+                    OutfitView(outfit: outfit)
+                }
             }
         }
     }
