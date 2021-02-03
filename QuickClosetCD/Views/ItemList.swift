@@ -192,7 +192,7 @@ struct ItemRow: View {
     var body: some View {
         VStack(alignment:.leading) {
             Text(item.wrappedName)
-            Text(item.categoryName)
+            Text(item.categoriesSortKey ?? "").font(.footnote).lineLimit(1)
         }
     }
 }

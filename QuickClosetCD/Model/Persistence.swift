@@ -78,20 +78,20 @@ struct PersistenceController {
         CoCa Cola Graphic Tee, cokeTee, Spring, Summer, White, Red, Top, At Home, Casual
         Workout Tee, workoutTee, Spring, Summer, Fall, Winter, Blue, Workout, Top
         Light Wash Jean, lightJean, Spring, Winter, Fall, Blue, Casual, Bottom
-        Leather Pant, leatherPant, Winter, Fall, Brown, Casual, Buisness Casual, Formal, Bottom
-        Blouse, blouse, Spring, Summer, Black, Pink, Buisness Casual, Formal, Top
-        Super Puff Jacket, superPuffJacket, Winter, Fall, Blue, Purple, Buisness Casual, Casual, Outerwear
+        Leather Pants, leatherPants, Winter, Fall, Brown, Casual, Business Casual, Formal, Bottom
+        Blouse, blouse, Spring, Summer, Black, Pink, Business Casual, Formal, Top
+        Super Puff Jacket, superPuffJacket, Winter, Fall, Blue, Purple, Business Casual, Casual, Outerwear
         Squamish Windbreaker, windbreakerJacket, Winter, Fall, Yellow, Orange, Workout, Casual, Outerwear
         Celestial Ring, ring, Winter, Fall, Summer, Spring, Yellow, Casual, Ballroom, Formal, Jewelry
-        Leaf Necklace, goldNecklace, Winter, Fall, Summer, Spring, Yellow, Casual, Buisness Casual, Ballroom, Formal, Jewelry
+        Leaf Necklace, goldNecklace, Winter, Fall, Summer, Spring, Yellow, Casual, Business Casual, Ballroom, Formal, Jewelry
         Light Denim Short, denimLightShort, Summer, Blue, Casual, At Home, Bottom
         Black Denim Short, denimBlackShort, Summer, Black, Casual, At Home, Bottom
         Emerald Dress, emeraldDress, Summer, Winter, Fall, Spring, Formal, Ballroom, Bottom, Top, Green
         Floral Dress, floralDress, Summer, Spring, Casual, Formal, Bottom, Top, White, Pattern
         Air Force 1, airforce1, Summer, Spring, Fall, Winter, Casual, White, Shoes, Grey
-        Black Heels, blackHeels, Summer, Spring, Fall, Winter, Buisness Casual, Formal, Ballroom, Black, Shoes
+        Black Heels, blackHeels, Summer, Spring, Fall, Winter, Business Casual, Formal, Ballroom, Black, Shoes
         Chelsea Boots, chelseaBoots, Spring, Fall, Winter, Casual, Black, Shoes
-        Blue Scrunchie, blueScrunchie, Summer, Spring, Winter, Casual, At Home, Blue, Head Wear
+        Blue Scrunchie, blueScrunchie, Summer, Spring, Winter, Casual, At Home, Blue, Headwear
         """
         
         let items = initialDatabase.components(separatedBy: "\n")
@@ -111,7 +111,7 @@ struct PersistenceController {
                 categoryObject.name = category
                 itemObject.categories = (itemObject.categories?.adding(categoryObject))! as NSSet
             }
-           
+            itemObject.categoriesSortKey = itemObject.computedCategoriesSortKey
         }
         try! context.save()
     }

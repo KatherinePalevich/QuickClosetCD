@@ -18,13 +18,13 @@ struct ContentView: View {
             itemListTab.tabItem{
                 Image(systemName: "list.bullet")
                 Text("Item List")
-            }.environment(\.managedObjectContext, persistenceController.container.viewContext)
-            .accentColor(Color.yellow)
+            }
             outfitGenerator.tabItem{
                 Image(systemName: "faxmachine")
                 Text("Outfit Generator")
             }
-        }
+        }.environment(\.managedObjectContext, persistenceController.container.viewContext)
+        .accentColor(Color.yellow)
     }
 }
 
@@ -37,8 +37,6 @@ var itemListTab: some View {
 var outfitGenerator: some View {
     NavigationView {
         OutfitGenerator()
-            //.environment(\.managedObjectContext, persistenceController.container.viewContext)
-            .accentColor(Color.yellow)
     }
 }
 

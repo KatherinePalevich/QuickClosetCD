@@ -18,7 +18,7 @@ extension CategoryGroup {
     static var allCategoryGroups: CategoryGroups = [
         CategoryGroup(name: "Season", categories: ["Spring", "Summer", "Autumn", "Winter"]),
         CategoryGroup(name: "Color(s)", categories: ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Black", "White", "Grey", "Tan", "Pattern"]),
-        CategoryGroup(name: "Type", categories: ["Top", "Bottom", "Head Wear", "Jewelry", "Accessory", "Shoes", "Socks", "Outerwear"]),
-        CategoryGroup(name: "Formality", categories: ["At Home", "Casual", "Workout", "Buisness Casual", "Formal", "Ballroom"])
+        CategoryGroup(name: "Type", categories: ["Top", "Bottom", "Headwear", "Jewelry", "Accessory", "Shoes", "Socks", "Outerwear"]),
+        CategoryGroup(name: "Formality", categories: ["At Home", "Casual", "Workout", "Business Casual", "Formal", "Ballroom"])
     ]
 }
