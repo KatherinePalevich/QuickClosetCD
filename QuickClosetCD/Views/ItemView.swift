@@ -13,7 +13,9 @@ struct ItemView: View {
         if let photo = item.wrappedPhoto {
           Image(uiImage: photo)
             .resizable()
+            .cornerRadius(5)
             .scaledToFit()
+            .frame(maxWidth: 120, maxHeight: 100)
         }
         if let name = item.name {
             Text(name)

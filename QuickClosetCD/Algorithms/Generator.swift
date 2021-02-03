@@ -9,8 +9,8 @@ import Foundation
 
 enum Formality : Int, CaseIterable, RawRepresentable {
     case atHome
-    case workout
     case casual
+    case workout
     case businessCasual
     case formal
     case ballroom
@@ -18,10 +18,10 @@ enum Formality : Int, CaseIterable, RawRepresentable {
         switch self {
         case .atHome:
             return "At Home"
-        case .workout:
-            return "Workout"
         case .casual:
             return "Casual"
+        case .workout:
+            return "Workout"
         case .businessCasual:
             return "Business Casual"
         case .formal:

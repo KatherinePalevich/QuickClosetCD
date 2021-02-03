@@ -20,7 +20,9 @@ struct GeneratedOutfits: View {
         ScrollView(.horizontal) {
             HStack{
                 ForEach(outfits) { outfit in
-                    OutfitView(outfit: outfit)
+                    ScrollView(.vertical){
+                        OutfitView(outfit: outfit)
+                    }
                 }
             }
         }
