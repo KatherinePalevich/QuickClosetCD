@@ -13,10 +13,11 @@ struct GeneratedOutfits: View {
     @FetchRequest(entity: Item.entity(), sortDescriptors: []) var items: FetchedResults<Item>
     var emotion : Emotion
     var formality : Formality
+    var season : Season
     
     var body: some View {
-        Text("Based on the given emotion of \(emotion.description) and the formality of \(formality.description) here are your generated outfits.")
-        let outfits = generateOutfits(color: .black, formality: formality, context: moc)
+        Text("Based on the given emotion of \(emotion.description), the formality of \(formality.description), and the temperature, here are your generated outfits!")
+        let outfits = generateOutfits(color: .black, formality: formality, season: season, context: moc)
         ScrollView(.horizontal) {
             HStack{
                 ForEach(outfits) { outfit in

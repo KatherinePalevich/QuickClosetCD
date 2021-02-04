@@ -19,7 +19,9 @@ struct OutfitGenerator: View {
                 Questionnaire(selectedEmotion: $selectedEmotion, selectedFormality: $selectedFormality)
                 NavigationLink(destination:
                                 GeneratedOutfits(emotion: Emotion(rawValue: selectedEmotion)!,
-                                formality: Formality(rawValue: selectedFormality)!)) {
+                                                 formality: Formality(rawValue: selectedFormality)!,
+                                                 season: current?.main.season ?? Season.spring
+                                )) {
                     Text("Generate Outfits!")
                          }.buttonStyle(PlainButtonStyle())
             }//.border(Color.blue)

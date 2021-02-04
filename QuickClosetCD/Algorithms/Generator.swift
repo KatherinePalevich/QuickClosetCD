@@ -93,3 +93,22 @@ enum ItemColor : Int, CaseIterable, RawRepresentable {
         }
     }
 }
+
+enum Season : Int, CaseIterable, RawRepresentable {
+    case winter
+    case spring
+    case summer
+    case fall
+    var description : String {
+        switch self {
+        case .winter:
+            return "Winter"
+        case .spring:
+            return "Spring"
+        case .summer:
+            return "Summer"
+        case .fall:
+            return "Fall"
+        }
+    }
+}
