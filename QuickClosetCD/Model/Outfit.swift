@@ -45,7 +45,7 @@ func generateOutfits(color: ItemColor, formality: Formality, season: Season, con
         Outfit(
             color: color,
             formality: formality,
-            top:top,
+            top: top,
             bottom: bottoms.randomElement(),
             shoes: shoes.randomElement(),
             outerwear: outerwears.randomElement(),

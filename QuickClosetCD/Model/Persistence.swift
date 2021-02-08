@@ -72,10 +72,10 @@ struct PersistenceController {
         //Create 5 t-shirts, 2 jeans, 1 dress shirt, 2 jackets, 1 ring, 1 necklace, 2 shorts, 2 dresses, 3 shoes
         // Name, filename, categories
         let initialDatabase = """
-        Space Graphic Tee, spaceTee, Spring, Summer, Black, White, Top, At Home, Casual
-        Snoopy Graphic Tee, snoopyTee, Spring, Summer, Black, White, Yellow, Top, At Home, Casual
-        Seagull Graphic Tee, seagullTee, Spring, Summer, Black, White, Orange, Top, At Home, Casual, Pattern
-        CoCa Cola Graphic Tee, cokeTee, Spring, Summer, White, Red, Top, At Home, Casual
+        Space Graphic Tee, spaceTee, Spring, Summer, Fall, Black, White, Top, At Home, Casual
+        Snoopy Graphic Tee, snoopyTee, Spring, Summer, Fall, Black, White, Yellow, Top, At Home, Casual
+        Seagull Graphic Tee, seagullTee, Spring, Summer, Fall, Black, White, Orange, Top, At Home, Casual, Pattern
+        CoCa Cola Graphic Tee, cokeTee, Spring, Summer, Fall, White, Red, Top, At Home, Casual
         Workout Tee, workoutTee, Spring, Summer, Fall, Winter, Blue, Workout, Top
         Light Wash Jean, lightJean, Spring, Winter, Fall, Blue, Casual, Bottom
         Leather Pants, leatherPants, Winter, Fall, Brown, Casual, Business Casual, Formal, Bottom
