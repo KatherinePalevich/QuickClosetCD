@@ -107,8 +107,8 @@ struct ItemList3: View {
                 self.newItemIsPresented = true
             },
             label: {
-                Label("Add Item", systemImage: "plus").imageScale(.large)
-                    .padding(10.0)
+                Label("Add Item ", systemImage: "plus").imageScale(.medium)
+                    .padding(2.5)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10.0)
                             .stroke(lineWidth: 2.0)
@@ -141,7 +141,7 @@ struct ItemList3: View {
                 
             })
             .environment(\.managedObjectContext, childContext)
-            .accentColor(.yellow)
+            .accentColor(.blue)
     }
     
     private func deleteItems(offsets: IndexSet) {
@@ -208,6 +208,6 @@ struct ItemList_Previews: PreviewProvider {
     }
     static var item: some View {
         ItemList().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-            .accentColor(.yellow)
+            .accentColor(.blue)
     }
 }

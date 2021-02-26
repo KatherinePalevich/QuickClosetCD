@@ -16,7 +16,7 @@ struct GeneratedOutfits: View {
     var season : Season
     
     var body: some View {
-        Text("Based on the given emotion of \(emotion.description), the formality of \(formality.description), and the temperature, here are your generated outfits!")
+        Text("Based on the given emotion of \(emotion.description), the formality of \(formality.description), and the season of \(season.description), here are your generated outfits!")
         let outfits = generateOutfits(color: .black, formality: formality, season: season, context: moc)
         ScrollView(.horizontal) {
             HStack{

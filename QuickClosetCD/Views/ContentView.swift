@@ -24,7 +24,7 @@ struct ContentView: View {
                 Text("Outfit Generator")
             }
         }.environment(\.managedObjectContext, persistenceController.container.viewContext)
-        .accentColor(Color.yellow)
+        .accentColor(Color.blue)
     }
 }
 

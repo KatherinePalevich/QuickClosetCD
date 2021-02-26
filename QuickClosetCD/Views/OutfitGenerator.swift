@@ -12,15 +12,29 @@ struct OutfitGenerator: View {
     @State private var forecast: Forecast?
     @State private var selectedEmotion = 0
     @State private var selectedFormality = 0
+    var season : Season {
+        //continue here to determine to correct limits for months
+        if getMonth(dt: Date()) <= 278 {
+            return Season.winter
+        } else if getMonth(dt: Date()) > 284 && getMonth(dt: Date()) <= 289 {
+            return Season.spring
+        } else if getMonth(dt: Date()) > 289 {
+            return Season.summer
+        } else if getMonth(dt: Date()) > 278 && getMonth(dt: Date()) <= 284{
+            return Season.fall
+        }
+        return Season.spring
+    }
+    
     var body: some View {
             Form {
-                WeatherReport(current: $current,
-                              forecast: $forecast)
+//                WeatherReport(current: $current,
+//                              forecast: $forecast)
                 Questionnaire(selectedEmotion: $selectedEmotion, selectedFormality: $selectedFormality)
                 NavigationLink(destination:
                                 GeneratedOutfits(emotion: Emotion(rawValue: selectedEmotion)!,
                                                  formality: Formality(rawValue: selectedFormality)!,
-                                                 season: current?.main.season ?? Season.spring
+                                                 season: season
                                 )) {
                     Text("Generate Outfits!")
                          }.buttonStyle(PlainButtonStyle())
@@ -62,6 +76,13 @@ struct OutfitGenerator: View {
             self.forecast = try! decoder.decode(Forecast.self, from: data!)
         }.resume()
     }
+    
+    func getMonth(dt : Date) -> Int {
+        var monthDate = dt.description.prefix(7)
+        monthDate = monthDate.suffix(2)
+        return Int(monthDate) ?? 0
+    }
+
 }
 
 struct OutfitGenerator_Previews: PreviewProvider {

@@ -17,17 +17,14 @@ struct OutfitView: View {
             if let bottom = outfit.bottom {
                 ItemView(item: bottom)
             }
+            if let socks = outfit.socks {
+                ItemView(item: socks)
+            }
             if let shoes = outfit.shoes {
                 ItemView(item: shoes)
             }
             if let outerwear = outfit.outerwear {
                 ItemView(item: outerwear)
-            }
-            if let socks = outfit.socks {
-                ItemView(item: socks)
-            }
-            if let socks = outfit.socks {
-                ItemView(item: socks)
             }
             if let headwear = outfit.headwear {
                 ItemView(item: headwear)

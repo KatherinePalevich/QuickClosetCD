@@ -96,6 +96,7 @@ struct PersistenceController {
         Leggings, leggings, Summer, Fall, Winter, Spring, Workout, At Home, Black, Bottom
         Sweatpants, sweatpants, Spring, Fall, Winter, At Home, Casual, Workout, Bottom, Grey, White
         Sweater, sweater, Spring, Fall, Winter, At Home, Casual, Business Casual, Top, Grey, Tan
+        Grey Socks, socksGrey, Spring, Summer, Fall, Winter, At Home, Casual, Workout, Socks, Grey
         """
         
         let items = initialDatabase.components(separatedBy: "\n")

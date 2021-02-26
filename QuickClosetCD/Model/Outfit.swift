@@ -21,9 +21,9 @@ struct Outfit : Identifiable {
     var formality : Formality
     var top : Item?
     var bottom: Item?
+    var socks : Item?
     var shoes : Item?
     var outerwear: Item?
-    var socks : Item?
     var headwear : Item?
     var jewelry: Item?
     var accessory: Item?
@@ -35,9 +35,9 @@ func generateOutfits(color: ItemColor, formality: Formality, season: Season, con
     }
     let tops = fetchItems(category: "Top")
     let bottoms = fetchItems(category: "Bottom")
+    let socks = fetchItems(category: "Socks")
     let shoes = fetchItems(category: "Shoes")
     let outerwears = fetchItems(category: "Outerwear")
-    let socks = fetchItems(category: "Socks")
     let headwear = fetchItems(category: "Headwear")
     let jewelry = fetchItems(category: "Jewelry")
     let accessories = fetchItems(category: "Accessory")
@@ -47,9 +47,9 @@ func generateOutfits(color: ItemColor, formality: Formality, season: Season, con
             formality: formality,
             top: top,
             bottom: bottoms.randomElement(),
+            socks: socks.randomElement(),
             shoes: shoes.randomElement(),
             outerwear: outerwears.randomElement(),
-            socks: socks.randomElement(),
             headwear: headwear.randomElement(),
             jewelry: jewelry.randomElement(),
             accessory: accessories.randomElement()

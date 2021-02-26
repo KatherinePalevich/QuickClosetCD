@@ -7,17 +7,24 @@
 
 import Foundation
 
-extension Current.Main {
+extension Current {
     var season : Season {
-        if temp <= 278 {
+        //continue here to determine to correct limits for months
+        if getMonth(dt: dt) <= 278 {
             return Season.winter
-        } else if temp > 284 && temp <= 289 {
+        } else if getMonth(dt: dt) > 284 && getMonth(dt: dt) <= 289 {
             return Season.spring
-        } else if temp > 289 {
+        } else if getMonth(dt: dt) > 289 {
             return Season.summer
-        } else if temp > 278 && temp <= 284{
+        } else if getMonth(dt: dt) > 278 && getMonth(dt: dt) <= 284{
             return Season.fall
         }
         return Season.spring
     }
+}
+
+func getMonth(dt : Date) -> Int {
+    var monthDate = dt.description.prefix(7)
+    monthDate = monthDate.suffix(2)
+    return Int(monthDate) ?? 0
 }
