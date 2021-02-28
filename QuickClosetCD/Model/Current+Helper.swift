@@ -10,13 +10,13 @@ import Foundation
 extension Current {
     var season : Season {
         //continue here to determine to correct limits for months
-        if getMonth(dt: dt) <= 278 {
+        if getMonth(dt: Date()) <= 2 || getMonth(dt: Date()) >= 12 {
             return Season.winter
-        } else if getMonth(dt: dt) > 284 && getMonth(dt: dt) <= 289 {
+        } else if getMonth(dt: Date()) >= 3 && getMonth(dt: Date()) <= 5 {
             return Season.spring
-        } else if getMonth(dt: dt) > 289 {
+        } else if getMonth(dt: Date()) >= 6 && getMonth(dt: Date()) <= 8 {
             return Season.summer
-        } else if getMonth(dt: dt) > 278 && getMonth(dt: dt) <= 284{
+        } else if getMonth(dt: Date()) >= 9 && getMonth(dt: Date()) <= 11{
             return Season.fall
         }
         return Season.spring
