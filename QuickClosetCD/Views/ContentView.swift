@@ -31,6 +31,7 @@ struct ContentView: View {
 var itemListTab: some View {
     NavigationView {
         ItemList()
+        WelcomeView()
     }
 }
 
