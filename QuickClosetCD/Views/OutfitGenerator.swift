@@ -13,17 +13,17 @@ struct OutfitGenerator: View {
     @State private var selectedEmotion = 0
     @State private var selectedFormality = 0
     var season : Season {
-        //continue here to determine to correct limits for months
-        if getMonth(dt: Date()) <= 278 {
+        let month = getMonth(dt: Date())
+        //determined based on the fact that people like to dress ahead of the season
+        if month < 3 || month == 12 {
             return Season.winter
-        } else if getMonth(dt: Date()) > 284 && getMonth(dt: Date()) <= 289 {
+        } else if month < 6 {
             return Season.spring
-        } else if getMonth(dt: Date()) > 289 {
+        } else if month < 9 {
             return Season.summer
-        } else if getMonth(dt: Date()) > 278 && getMonth(dt: Date()) <= 284{
+        } else {
             return Season.fall
         }
-        return Season.spring
     }
     
     var body: some View {
