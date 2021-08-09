@@ -42,6 +42,7 @@ struct OutfitGenerator: View {
             .navigationBarTitle("Outfit Generator")
             .onAppear {
                 loadDataCurrent()
+                // The API subscription expired.
                 //loadDataForecast()
             }
     }
