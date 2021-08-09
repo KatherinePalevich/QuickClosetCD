@@ -42,7 +42,7 @@ struct OutfitGenerator: View {
             .navigationBarTitle("Outfit Generator")
             .onAppear {
                 loadDataCurrent()
-                loadDataForecast()
+                //loadDataForecast()
             }
     }
     
