@@ -1,4 +1,5 @@
 # QuickCloset
+<img src="playstore.png" width="200">
 
 QuickCloset is an iOS application I wrote for a Independent Studies Computer Science class. I have a passion for fashion, yearning for learning, and 
 wanted to combine these with my love for programming.
